@@ -37,6 +37,11 @@ class MainApp(App):
     def on_start(self):
         pass
 
+    def close(self):
+        quit()
+
+    def minimize(self):
+        Window.minimize()
 
 MainApp().run()
 

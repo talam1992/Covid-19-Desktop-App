@@ -30,7 +30,7 @@
                 width: "35dp"
                 pos_hint: {"center_y" : 0.48}
                 on_release:
-                    #app.minimize()
+                    app.minimize()
             ImageButton:
                 id: close_btn_id
                 source: "icons/cross.png"
@@ -39,7 +39,7 @@
                 width: "18dp"
                 pos_hint: {"center_y" : 0.45}
                 on_release:
-                    #app.close()
+                    app.close()
             Spacer:
                 size_hint:(0.01,1)
 
