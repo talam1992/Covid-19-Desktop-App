@@ -11,11 +11,19 @@ from kivy.config import Config
 
 
 
-Config.set('graphics', 'width', '1200')
-Config.set('graphics', 'height', '900')
+Config.set('graphics', 'width', '900')
+Config.set('graphics', 'height', '750')
 Config.set('graphics', 'borderless', '1')
 Config.write()
 
+class ImageButton(ButtonBehavior,Image):
+    pass
+
+class LabelButton(ButtonBehavior,Label):
+    pass
+
+class Spacer(Label):
+    pass
 
 class DashboardScreen(Screen):
     pass
