@@ -35,7 +35,12 @@ class MainApp(App):
         return GUI
 
     def on_start(self):
-        pass
+        LabelBase.register(name= 'myraid_pro_reg', fn_regular ='MYRIADPRO-REGULAR.OTF')
+        LabelBase.register (name='d_ding_reg', fn_regular='d-din.regular.ttf')
+        LabelBase.register (name='roboto-medium', fn_regular='Roboto-Medium.ttf')
+        LabelBase.register (name='roboto-thin', fn_regular='Roboto-Thin.ttf')
+        LabelBase.register (name='bistecca', fn_regular='Bistecca.ttf')
+        LabelBase.register (name='teko-reg', fn_regular='Teko-Regular.ttf')
 
     def close(self):
         quit()
