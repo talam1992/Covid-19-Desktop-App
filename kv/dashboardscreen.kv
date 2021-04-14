@@ -9,7 +9,7 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
-
+    ##----------------------Start of Top Bar-------------------#
         BoxLayout:
             orientation: "horizontal"
             size_hint:(1,0.03)
@@ -42,7 +42,70 @@
                     app.close()
             Spacer:
                 size_hint:(0.01,1)
+        ##----------------------End of Top Bar-------------------#
+
+        Spacer:
+            size_hint: (0.98,0.04)
+            pos_hint:{"right": 0.99}
 
         BoxLayout:
-            orientation: "horizontal"
-            size_hint:(1,0.97)
+            orientation: "vertical"
+            size_hint:(1,0.93)
+
+            ##----------------------Start of Top Country Search and Date Row-------------------#
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint: (1,0.1)
+
+                Label:
+                    text: "Enter Country : "
+                    size_hint:(0.15,0.4)
+                    color: utils.get_color_from_hex("#2b2f43")
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (0.25,0.4)
+
+                    TextInput:
+                        hint_text: ""
+                        font_size: "15sp"
+                        font_name: "barlow-reg"
+                        size_hint: (1,0.83)
+                        background_color: 0,0,0,0
+                        foreground_color: 0.8,0.8,0.8,1
+                    BoxLayout:
+                        size_hint:(1,0.03)
+                        canvas:
+                            Color:
+                                rgba: utils.get_color_from_hex("#2a2f44")
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+
+                    Spacer:
+                        size_hint:(1,0.03)
+
+                ImageButton:
+                    source:"icons/go.png"
+                    size_hint: (0.1,0.4)
+                    allow_stretch:True
+                    keep_aspect: False
+
+                Spacer:
+                    size_hint:(0.55,1)
+
+                Label:
+                    id: date_id
+                    text: "August 25,2020"
+                    size_hint: (0.1,0.5)
+                    font_size: "15sp"
+                    font_name: "barlow-reg"
+                    color: utils.get_color_from_hex("#2b2f43")
+                Spacer:
+                    size_hint:(0.02,1)
+
+            ##----------------------End of Top Country Search and Date Row-------------------#
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint: (1,0.83)

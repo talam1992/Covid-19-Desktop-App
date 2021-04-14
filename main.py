@@ -11,7 +11,7 @@ from kivy.config import Config
 
 
 
-Config.set('graphics', 'width', '900')
+Config.set('graphics', 'width', '1100')
 Config.set('graphics', 'height', '750')
 Config.set('graphics', 'borderless', '1')
 Config.write()
@@ -41,6 +41,8 @@ class MainApp(App):
         LabelBase.register (name='roboto-thin', fn_regular='Roboto-Thin.ttf')
         LabelBase.register (name='bistecca', fn_regular='Bistecca.ttf')
         LabelBase.register (name='teko-reg', fn_regular='Teko-Regular.ttf')
+        LabelBase.register (name='barlow-reg', fn_regular='BarlowSemiCondensed-Regular.ttf')
+        LabelBase.register (name='barlow-bold', fn_regular='BarlowSemiCondensed-SemiBold.ttf')
 
     def close(self):
         quit()
