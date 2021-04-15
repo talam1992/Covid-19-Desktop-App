@@ -106,6 +106,81 @@
 
             ##----------------------End of Top Country Search and Date Row-------------------#
 
+            Spacer:
+                size_hint: (1,0.05)
+
+            ##----------------------Start of "Confirmed Cases", "Active case", "Confirmed Death" row-------------------#
+
             BoxLayout:
                 orientation: "horizontal"
-                size_hint: (1,0.83)
+                size_hint: (1,0.425)
+
+                ##--Start of Confirmed cases Widget ------#
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (0.74,1)
+                    spacing: "10"
+
+                    canvas:
+                        Color:
+                            rgba: utils.get_color_from_hex("#121c2e")
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: (1,0.2)
+                        Spacer:
+                            size_hint: (1, 0.1)
+                        Label:
+                            text: "Confirmed Cases"
+                            size_hint:(1,0.9)
+                            font_size: "35sp"
+                            color: utils.get_color_from_hex("#47546e")
+
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: (1,0.6)
+
+                        Label:
+                            id: confirmed_cases_id
+                            font_size: "200sp"
+                            text: "21,010"
+                            font_name: "roboto-medium"
+                            color: utils.get_color_from_hex("#8695ad")
+
+                    BoxLayout:
+                        orientation: "horizontal"
+                        size_hint: (1,0.2)
+                        Spacer:
+                            size_hint:(0.45,0.6)
+                        Image:
+                            source: "icons/up.png"
+                            size_hint:(0.05,0.4)
+                            pos_hint:{"center_y":0.5}
+
+                        Label:
+                            text: "134"
+                            font_size: "22sp"
+                            font_name: "roboto-medium"
+                            size_hint: (0.05,0.6)
+                            color: utils.get_color_from_hex("#500721")
+                            pos_hint: {"center_y":0.5}
+
+                        Spacer:
+                            size_hint:(0.45,0.6)
+
+                ##--End of Confirmed cases Widget ------#
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (0.26,1)
+                    spacing: "10"
+
+
+            ##----------------------End of "Confirmed Cases", "Active case", "Confirmed Death" row-------------------#
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint: (1,0.355)
