@@ -173,10 +173,136 @@
 
                 ##--End of Confirmed cases Widget ------#
 
+                Spacer:
+                    size_hint: (0.01,1)
+
                 BoxLayout:
                     orientation: "vertical"
-                    size_hint: (0.26,1)
+                    size_hint: (0.25,1)
                     spacing: "10"
+
+                    canvas:
+                        Color:
+                            rgba: utils.get_color_from_hex("#0d1727")
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    ##--Start of Confirmed Death Widget ------#
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: (1,0.5)
+                        spacing: "1"
+                        canvas:
+                            Color:
+                                rgba: utils.get_color_from_hex("#121c2e")
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+
+                        Spacer:
+                            size_hint:(1,0.1)
+                        Label:
+                            text: "Confirmed Deaths"
+                            font_size: "22sp"
+                            font_name: "roboto-medium"
+                            color: utils.get_color_from_hex("#47546e")
+                            size_hint: (1,0.1)
+                        Label:
+                            id: confirmed_death_id
+                            font_name: "roboto-medium"
+                            font_size: "55sp"
+                            text: "378"
+                            color: utils.get_color_from_hex("#47546e")
+                            size_hint: (1,0.5)
+
+                        BoxLayout:
+                            orientation: "horizontal"
+                            size_hint:(1,0.2)
+
+                            Spacer:
+                                size_hint:(0.4,0.6)
+                            Image:
+                                source: "icons/up.png"
+                                size_hint:(0.05,0.4)
+                                pos_hint:{"center+y":0.5}
+
+                            Label:
+                                text: "212"
+                                font_size: "22sp"
+                                size_hint: (0.2,0.6)
+                                font_name: "roboto-medium"
+                                color: utils.get_color_from_hex("#500721")
+                                #pos_hint:{"center_y":0.5}
+
+                            Spacer:
+                                size_hint:(0.35,0.6)
+                    ##--End of Confirmed Death Widget ------#
+
+                        Spacer:
+                            size_hint: (1,0.1)
+
+
+                    ##--Start of Active Case Widget ------#
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint: (1,0.5)
+                        spacing: "1"
+                        canvas:
+                            Color:
+                                rgba: utils.get_color_from_hex("#121c2e")
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+
+                        Spacer:
+                            size_hint:(1,0.1)
+                        Label:
+                            text: "Active Case"
+                            font_size: "24sp"
+                            font_name: "roboto-medium"
+                            color: utils.get_color_from_hex("#47546e")
+                            size_hint: (1,0.1)
+                        Label:
+                            id: active_case_case
+                            font_name: "roboto-medium"
+                            font_size: "55sp"
+                            text: "1,101"
+                            color: utils.get_color_from_hex("#47546e")
+                            size_hint: (1,0.5)
+
+                        BoxLayout:
+                            orientation: "horizontal"
+                            size_hint:(1,0.2)
+
+                            Spacer:
+                                size_hint:(0.45,0.6)
+                            Image:
+                                source: "icons/down.png"
+                                size_hint:(0.08,0.4)
+                                pos_hint:{"center_y":0.4}
+
+                            Label:
+                                text: "567"
+                                font_size: "22sp"
+                                size_hint: (0.2,0.6)
+                                font_name: "roboto-medium"
+                                color: utils.get_color_from_hex("#05a379")
+                                pos_hint:{"center+y":0.5}
+
+                            Spacer:
+                                size_hint:(0.4,0.6)
+
+                    ##--End of Active Case Widget ------#
+
+                        Spacer:
+                            size_hint: (1,0.1)
+
+
+
+
+
+
 
 
             ##----------------------End of "Confirmed Cases", "Active case", "Confirmed Death" row-------------------#
