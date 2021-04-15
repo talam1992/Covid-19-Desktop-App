@@ -225,7 +225,7 @@
                             Image:
                                 source: "icons/up.png"
                                 size_hint:(0.05,0.4)
-                                pos_hint:{"center+y":0.5}
+                                pos_hint:{"center_y":0.5}
 
                             Label:
                                 text: "212"
@@ -233,17 +233,17 @@
                                 size_hint: (0.2,0.6)
                                 font_name: "roboto-medium"
                                 color: utils.get_color_from_hex("#500721")
-                                #pos_hint:{"center_y":0.5}
+                                pos_hint:{"center_y":0.5}
 
                             Spacer:
                                 size_hint:(0.35,0.6)
-                    ##--End of Confirmed Death Widget ------#
 
                         Spacer:
                             size_hint: (1,0.1)
 
+                    ##--End of Confirmed Death Widget ------#
 
-                    ##--Start of Active Case Widget ------#
+                    ##--Start of Active Cases Widget ------#
                     BoxLayout:
                         orientation: "vertical"
                         size_hint: (1,0.5)
@@ -264,7 +264,7 @@
                             color: utils.get_color_from_hex("#47546e")
                             size_hint: (1,0.1)
                         Label:
-                            id: active_case_case
+                            id: active_case_id
                             font_name: "roboto-medium"
                             font_size: "55sp"
                             text: "1,101"
@@ -280,7 +280,7 @@
                             Image:
                                 source: "icons/down.png"
                                 size_hint:(0.08,0.4)
-                                pos_hint:{"center_y":0.4}
+                                pos_hint:{"center_y":0.5}
 
                             Label:
                                 text: "567"
@@ -288,25 +288,103 @@
                                 size_hint: (0.2,0.6)
                                 font_name: "roboto-medium"
                                 color: utils.get_color_from_hex("#05a379")
-                                pos_hint:{"center+y":0.5}
+                                pos_hint:{"center_y":0.5}
 
                             Spacer:
                                 size_hint:(0.4,0.6)
 
-                    ##--End of Active Case Widget ------#
-
                         Spacer:
                             size_hint: (1,0.1)
 
-
-
-
-
-
-
+                        ##--End of Active Cases Widget ------#
 
             ##----------------------End of "Confirmed Cases", "Active case", "Confirmed Death" row-------------------#
 
+            Spacer:
+                size_hint: (1, 0.025)
+
+            ##----------------------Start of "Graph", "Recovered case" row-------------------#
+
             BoxLayout:
                 orientation: "horizontal"
-                size_hint: (1,0.355)
+                size_hint: (1,0.3)
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: (0.74,1)
+                    spacing: "10"
+
+                    canvas:
+                        Color:
+                            rgba: utils.get_color_from_hex("#121c2e")
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                Spacer:
+                    size_hint: (0.01,1)
+
+                ##--Start of Recovered  Widget ------#
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (0.25,1)
+                    spacing: "10"
+                    canvas:
+                        Color:
+                            rgba: utils.get_color_from_hex("#121c2e")
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    Spacer:
+                        size_hint:(1,0.1)
+
+                    Label:
+                        text: "Recovered"
+                        font_size: "24sp"
+                        font_name: "roboto-medium"
+                        color: utils.get_color_from_hex("#47546e")
+                        size_hint: (1,0.1)
+                    Label:
+                        id: recovered_id
+                        font_name: "roboto-medium"
+                        font_size: "55sp"
+                        text: "18,231"
+                        color: utils.get_color_from_hex("#47546e")
+                        size_hint: (1,0.5)
+
+                    BoxLayout:
+                        orientation: "horizontal"
+                        size_hint:(1,0.2)
+
+                        Spacer:
+                            size_hint:(0.45,0.6)
+                        Image:
+                            source: "icons/up_green.png"
+                            size_hint:(0.08,0.4)
+                            pos_hint:{"center_y":0.45}
+
+                        Label:
+                            id: recovered_delta_id
+                            text: "1361"
+                            font_size: "22sp"
+                            size_hint: (0.2,0.6)
+                            font_name: "roboto-medium"
+                            color: utils.get_color_from_hex("#05a379")
+                            pos_hint:{"center_y":0.5}
+
+                        Spacer:
+                            size_hint:(0.4,0.6)
+
+                    Spacer:
+                        size_hint: (1,0.1)
+
+                ##--End of Recovered Cases Widget ------#
+
+
+            ##----------------------End of "Graph", "Recovered" row-------------------#
+
+
+
+            Spacer:
+                size_hint: (1,0.03)
