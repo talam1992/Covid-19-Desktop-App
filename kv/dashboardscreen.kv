@@ -46,11 +46,30 @@
 
         Spacer:
             size_hint: (0.98,0.04)
-            pos_hint:{"right": 0.99}
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: (1,0.06)
+            Spacer:
+                size_hint:(0.37,1)
+            Label:
+                text: "COVID-19 Live"
+                font_size: "50sp"
+                size_hint: (0.2,1)
+                color: utils.get_color_from_hex("#748ca6")
+            Spacer:
+                size_hint:(0.03,1)
+            Image:
+                source: "icons/ripple.gif"
+                size_hint: (0.1,1)
+                anim_delay: 0.02
+            Spacer:
+                size_hint:(0.3,1)
 
         BoxLayout:
             orientation: "vertical"
-            size_hint:(1,0.93)
+            size_hint:(1,0.87)
+            pos_hint:{"right": 0.99}
 
             ##----------------------Start of Top Country Search and Date Row-------------------#
 
@@ -146,7 +165,7 @@
                         Label:
                             id: confirmed_cases_id
                             font_size: "200sp"
-                            text: "21,010"
+                            text: "--,--"
                             font_name: "roboto-medium"
                             color: utils.get_color_from_hex("#8695ad")
 
@@ -161,11 +180,12 @@
                             pos_hint:{"center_y":0.5}
 
                         Label:
-                            text: "134"
+                            id: confirmed_cases_delta_id
+                            text: "--"
                             font_size: "22sp"
                             font_name: "roboto-medium"
                             size_hint: (0.05,0.6)
-                            color: utils.get_color_from_hex("#500721")
+                            color: utils.get_color_from_hex("#950d0d")
                             pos_hint: {"center_y":0.5}
 
                         Spacer:
@@ -209,10 +229,10 @@
                             color: utils.get_color_from_hex("#47546e")
                             size_hint: (1,0.1)
                         Label:
-                            id: confirmed_death_id
+                            id: confirmed_deaths_id
                             font_name: "roboto-medium"
                             font_size: "55sp"
-                            text: "378"
+                            text: "--"
                             color: utils.get_color_from_hex("#47546e")
                             size_hint: (1,0.5)
 
@@ -228,11 +248,12 @@
                                 pos_hint:{"center_y":0.5}
 
                             Label:
-                                text: "212"
+                                id: confirmed_deaths_delta_id
+                                text: "--"
                                 font_size: "22sp"
                                 size_hint: (0.2,0.6)
                                 font_name: "roboto-medium"
-                                color: utils.get_color_from_hex("#500721")
+                                color: utils.get_color_from_hex("#950d0d")
                                 pos_hint:{"center_y":0.5}
 
                             Spacer:
@@ -267,7 +288,7 @@
                             id: active_case_id
                             font_name: "roboto-medium"
                             font_size: "55sp"
-                            text: "1,101"
+                            text: "--"
                             color: utils.get_color_from_hex("#47546e")
                             size_hint: (1,0.5)
 
@@ -276,22 +297,24 @@
                             size_hint:(1,0.2)
 
                             Spacer:
-                                size_hint:(0.45,0.6)
+                                size_hint:(0.29,0.6)
                             Image:
-                                source: "icons/down.png"
+                                source: "icons/brown_circle.png"
                                 size_hint:(0.08,0.4)
                                 pos_hint:{"center_y":0.5}
-
+                            Spacer:
+                                size_hint:(0.01,0.6)
                             Label:
-                                text: "567"
-                                font_size: "22sp"
-                                size_hint: (0.2,0.6)
+                                id: critical_cases
+                                text: "--"
+                                font_size: "15sp"
+                                size_hint: (0.4,0.6)
                                 font_name: "roboto-medium"
-                                color: utils.get_color_from_hex("#05a379")
+                                color: utils.get_color_from_hex("#854102")
                                 pos_hint:{"center_y":0.5}
 
                             Spacer:
-                                size_hint:(0.4,0.6)
+                                size_hint:(0.25,0.6)
 
                         Spacer:
                             size_hint: (1,0.1)
@@ -346,10 +369,10 @@
                         color: utils.get_color_from_hex("#47546e")
                         size_hint: (1,0.1)
                     Label:
-                        id: recovered_id
+                        id: recovered_cases_id
                         font_name: "roboto-medium"
                         font_size: "55sp"
-                        text: "18,231"
+                        text: "--"
                         color: utils.get_color_from_hex("#47546e")
                         size_hint: (1,0.5)
 
@@ -358,15 +381,16 @@
                         size_hint:(1,0.2)
 
                         Spacer:
-                            size_hint:(0.45,0.6)
+                            size_hint:(0.29,0.6)
                         Image:
-                            source: "icons/up_green.png"
+                            source: "icons/green_circle.png"
                             size_hint:(0.08,0.4)
                             pos_hint:{"center_y":0.45}
-
+                        Spacer:
+                            size_hint:(0.01,0.1)
                         Label:
-                            id: recovered_delta_id
-                            text: "1361"
+                            id: recovery_rate_id
+                            text: "--"
                             font_size: "22sp"
                             size_hint: (0.2,0.6)
                             font_name: "roboto-medium"
@@ -374,7 +398,7 @@
                             pos_hint:{"center_y":0.5}
 
                         Spacer:
-                            size_hint:(0.4,0.6)
+                            size_hint:(0.25,0.1)
 
                     Spacer:
                         size_hint: (1,0.1)
