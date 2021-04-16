@@ -25,3 +25,9 @@ python -m pip install kivy_deps.angle==0.1.9
 ```
 python -m pip install kivy==1.11.0
 ```
+
+###### Covid-19 Desktop App
+![Covid-19 Desktop App](image/Covid-19%20Desktop%20App.jpg)
+
+###### Covid-19 Desktop App Video
+[<img src="https://img.youtube.com/vi/r9VkYOuOSEk/maxresdefault.jpg" width="100%">](https://youtu.be/r9VkYOuOSEk)
