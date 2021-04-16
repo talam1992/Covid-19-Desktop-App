@@ -2,50 +2,56 @@
 
 <DashboardScreen>:
     BoxLayout:
-        orientation: "vertical"
+        orientation : "vertical"
         canvas:
             Color:
                 rgba: utils.get_color_from_hex("#0d1727")
             Rectangle:
                 size: self.size
                 pos: self.pos
-    ##----------------------Start of Top Bar-------------------#
+    ##-----------------Start of Top bar------------------------#
         BoxLayout:
             orientation: "horizontal"
             size_hint:(1,0.03)
             spacing:"10"
+
             canvas:
                 Color:
                     rgba: utils.get_color_from_hex("#121c2e")
                 Rectangle:
                     size: self.size
-                    pos: self.pos
+                    pos : self.pos
             Spacer:
                 size_hint:(0.75,1)
+
             ImageButton:
                 id: minimize_btn_id
-                source: "icons/minimize.png"
-                size_hint: (None, None)
+                source:"icons/minimize.png"
+                size_hint: (None,None)
                 height: "25dp"
                 width: "35dp"
-                pos_hint: {"center_y" : 0.48}
+                pos_hint:{"center_y": 0.48}
                 on_release:
                     app.minimize()
+
             ImageButton:
-                id: close_btn_id
+                id: clos_btn_id
                 source: "icons/cross.png"
-                size_hint: (None, None)
+                size_hint: (None,None)
                 height: "18dp"
                 width: "18dp"
                 pos_hint: {"center_y" : 0.45}
                 on_release:
                     app.close()
             Spacer:
-                size_hint:(0.01,1)
-        ##----------------------End of Top Bar-------------------#
+                size_hint: (0.01,1)
+
+        ##-----------------End of Top bar------------------------#
+
+
 
         Spacer:
-            size_hint: (0.98,0.04)
+            size_hint :(1,0.04)
 
         BoxLayout:
             orientation: "horizontal"
@@ -53,45 +59,59 @@
             Spacer:
                 size_hint:(0.37,1)
             Label:
-                text: "COVID-19 Live"
-                font_size: "50sp"
-                size_hint: (0.2,1)
+                text:"COVID-19 Live"
+                font_size:"50sp"
+                size_hint:(0.2,1)
                 color: utils.get_color_from_hex("#748ca6")
             Spacer:
                 size_hint:(0.03,1)
             Image:
-                source: "icons/ripple.gif"
-                size_hint: (0.1,1)
-                anim_delay: 0.02
+                source:"icons/ripple.gif"
+                size_hint:(0.1,1)
+                anim_delay:0.02
+
             Spacer:
                 size_hint:(0.3,1)
 
+
+
         BoxLayout:
             orientation: "vertical"
-            size_hint:(1,0.87)
+            size_hint: (0.98,0.87)
             pos_hint:{"right": 0.99}
 
-            ##----------------------Start of Top Country Search and Date Row-------------------#
 
+            ##-----------------Start of Country Search and Date Row------------------------#
             BoxLayout:
                 orientation: "horizontal"
-                size_hint: (1,0.1)
+                size_hint : (1,0.1)
 
+
+                Spacer:
+                    size_hint:(0.05,1)
                 Label:
-                    text: "Enter Country : "
-                    size_hint:(0.15,0.4)
+                    text: "Enter Location : "
+                    size_hint:(0.05,0.4)
                     color: utils.get_color_from_hex("#2b2f43")
+                Spacer:
+
+                    size_hint:(0.03,1)
+
                 BoxLayout:
                     orientation: "vertical"
-                    size_hint: (0.25,0.4)
+                    size_hint: (0.25,0.5)
 
                     TextInput:
+                        id:search_location_id
                         hint_text: ""
-                        font_size: "15sp"
-                        font_name: "barlow-reg"
-                        size_hint: (1,0.83)
-                        background_color: 0,0,0,0
-                        foreground_color: 0.8,0.8,0.8,1
+                        font_size : "15sp"
+                        font_name : "barlow-reg"
+                        size_hint:(1,0.83)
+                        background_color : 0,0,0,0
+                        foreground_color : 0.8,0.8,0.8,1
+                        multiline: False
+                        on_text_validate: app.process_datasearch()
+
                     BoxLayout:
                         size_hint:(1,0.03)
                         canvas:
@@ -99,45 +119,58 @@
                                 rgba: utils.get_color_from_hex("#2a2f44")
                             Rectangle:
                                 size: self.size
-                                pos: self.pos
-
+                                pos : self.pos
                     Spacer:
-                        size_hint:(1,0.03)
+                        size_hint:(1,0.1)
 
                 ImageButton:
                     source:"icons/go.png"
-                    size_hint: (0.1,0.4)
+                    size_hint: (0.07,0.4)
                     allow_stretch:True
                     keep_aspect: False
+                    on_release:
+                        app.process_datasearch()
 
                 Spacer:
-                    size_hint:(0.55,1)
+                    size_hint:(0.05,1) #0.05,1
+                Label:
+                    id: error_message_id
+                    color: utils.get_color_from_hex("#ff0000")
+                    font_size:"25sp"
+                    text:""
+                    font_name: 'barlow-reg'
+                    size_hint:(0.35,1)
+
+
 
                 Label:
-                    id: date_id
-                    text: "August 25,2020"
+                    id: date_label_id
+                    text: "-------"
                     size_hint: (0.1,0.5)
                     font_size: "15sp"
-                    font_name: "barlow-reg"
-                    color: utils.get_color_from_hex("#2b2f43")
+                    font_name : "barlow-reg"
+                    color : utils.get_color_from_hex("#2b2f43")
                 Spacer:
-                    size_hint:(0.02,1)
+                    size_hint:(0.05,1)
 
-            ##----------------------End of Top Country Search and Date Row-------------------#
+              ##-----------------End of Country Search and Date Row------------------------#
 
             Spacer:
                 size_hint: (1,0.05)
 
-            ##----------------------Start of "Confirmed Cases", "Active case", "Confirmed Death" row-------------------#
+
+                ##-----------------Start of "Confirmed Cases", "Active cases", "Confirmed Deaths" row------------------------#
 
             BoxLayout:
                 orientation: "horizontal"
                 size_hint: (1,0.425)
 
-                ##--Start of Confirmed cases Widget ------#
+
+                ##--Start of Confrimed Cases Widget------#
+
                 BoxLayout:
                     orientation: "vertical"
-                    size_hint: (0.74,1)
+                    size_hint:(0.74,1)
                     spacing: "10"
 
                     canvas:
@@ -151,11 +184,11 @@
                         orientation: "vertical"
                         size_hint: (1,0.2)
                         Spacer:
-                            size_hint: (1, 0.1)
+                            size_hint:(1,0.1)
                         Label:
                             text: "Confirmed Cases"
                             size_hint:(1,0.9)
-                            font_size: "35sp"
+                            font_size : "35sp"
                             color: utils.get_color_from_hex("#47546e")
 
                     BoxLayout:
@@ -165,40 +198,40 @@
                         Label:
                             id: confirmed_cases_id
                             font_size: "200sp"
-                            text: "--,--"
+                            text : "--,--"
                             font_name: "roboto-medium"
                             color: utils.get_color_from_hex("#8695ad")
 
                     BoxLayout:
                         orientation: "horizontal"
-                        size_hint: (1,0.2)
+                        size_hint:(1,0.2)
                         Spacer:
                             size_hint:(0.45,0.6)
                         Image:
-                            source: "icons/up.png"
+                            source:"icons/up.png"
                             size_hint:(0.05,0.4)
-                            pos_hint:{"center_y":0.5}
+                            pos_hint:{"center_y": 0.5}
 
                         Label:
-                            id: confirmed_cases_delta_id
+                            id:confirmed_cases_delta_id
                             text: "--"
-                            font_size: "22sp"
+                            font_size : "22sp"
                             font_name: "roboto-medium"
-                            size_hint: (0.05,0.6)
-                            color: utils.get_color_from_hex("#950d0d")
-                            pos_hint: {"center_y":0.5}
+                            size_hint:(0.05,0.6)
+                            color : utils.get_color_from_hex("#950d0d")
+                            pos_hint:{"center_y":0.5}
 
                         Spacer:
                             size_hint:(0.45,0.6)
 
-                ##--End of Confirmed cases Widget ------#
+                    ##--End of Confrimed Cases Widget------#
 
                 Spacer:
-                    size_hint: (0.01,1)
+                    size_hint:(0.01,1)
 
                 BoxLayout:
                     orientation: "vertical"
-                    size_hint: (0.25,1)
+                    size_hint:(0.25,1)
                     spacing: "10"
 
                     canvas:
@@ -208,7 +241,8 @@
                             size: self.size
                             pos: self.pos
 
-                    ##--Start of Confirmed Death Widget ------#
+                    ##--Start of Confrimed Deaths Widget------#
+
                     BoxLayout:
                         orientation: "vertical"
                         size_hint: (1,0.5)
@@ -219,33 +253,33 @@
                             Rectangle:
                                 size: self.size
                                 pos: self.pos
-
                         Spacer:
                             size_hint:(1,0.1)
                         Label:
-                            text: "Confirmed Deaths"
-                            font_size: "22sp"
+                            text: "Confrimed Deaths"
+                            font_size : "22sp"
                             font_name: "roboto-medium"
                             color: utils.get_color_from_hex("#47546e")
-                            size_hint: (1,0.1)
+                            size_hint:(1,0.1)
+
                         Label:
                             id: confirmed_deaths_id
-                            font_name: "roboto-medium"
                             font_size: "55sp"
                             text: "--"
+                            font_name: "roboto-medium"
                             color: utils.get_color_from_hex("#47546e")
                             size_hint: (1,0.5)
 
                         BoxLayout:
                             orientation: "horizontal"
-                            size_hint:(1,0.2)
+                            size_hint: (1,0.2)
 
                             Spacer:
-                                size_hint:(0.4,0.6)
+                                size_hint: (0.4,0.6)
                             Image:
                                 source: "icons/up.png"
                                 size_hint:(0.05,0.4)
-                                pos_hint:{"center_y":0.5}
+                                pos_hint:{"center_y" : 0.5}
 
                             Label:
                                 id: confirmed_deaths_delta_id
@@ -254,43 +288,39 @@
                                 size_hint: (0.2,0.6)
                                 font_name: "roboto-medium"
                                 color: utils.get_color_from_hex("#950d0d")
-                                pos_hint:{"center_y":0.5}
-
+                                pos_hint:{"center_y" :0.5}
                             Spacer:
                                 size_hint:(0.35,0.6)
 
-                        Spacer:
-                            size_hint: (1,0.1)
+                        ##--End of Confrimed Deaths Widget------#
 
-                    ##--End of Confirmed Death Widget ------#
 
-                    ##--Start of Active Cases Widget ------#
+                        ##--Start of Active Cases Widget------#
+
                     BoxLayout:
                         orientation: "vertical"
                         size_hint: (1,0.5)
-                        spacing: "1"
                         canvas:
                             Color:
-                                rgba: utils.get_color_from_hex("#121c2e")
+                                rgba:utils.get_color_from_hex("#121c2e")
                             Rectangle:
                                 size: self.size
-                                pos: self.pos
-
+                                pos : self.pos
                         Spacer:
                             size_hint:(1,0.1)
                         Label:
-                            text: "Active Case"
+                            text: "Active Cases"
                             font_size: "24sp"
-                            font_name: "roboto-medium"
-                            color: utils.get_color_from_hex("#47546e")
-                            size_hint: (1,0.1)
+                            font_name:"roboto-medium"
+                            color:utils.get_color_from_hex("#47546e")
+                            size_hint:(1,0.1)
                         Label:
-                            id: active_case_id
+                            id: active_cases_id
                             font_name: "roboto-medium"
                             font_size: "55sp"
                             text: "--"
                             color: utils.get_color_from_hex("#47546e")
-                            size_hint: (1,0.5)
+                            size_hint:(1,0.5)
 
                         BoxLayout:
                             orientation: "horizontal"
@@ -300,41 +330,40 @@
                                 size_hint:(0.29,0.6)
                             Image:
                                 source: "icons/brown_circle.png"
-                                size_hint:(0.08,0.4)
-                                pos_hint:{"center_y":0.5}
+                                size_hint: (0.05,0.4)
+                                pos_hint: {"center_y":0.5}
                             Spacer:
                                 size_hint:(0.01,0.6)
                             Label:
-                                id: critical_cases
+                                id: critical_cases_id
                                 text: "--"
                                 font_size: "15sp"
-                                size_hint: (0.4,0.6)
                                 font_name: "roboto-medium"
                                 color: utils.get_color_from_hex("#854102")
-                                pos_hint:{"center_y":0.5}
-
+                                pos_hint: {"center_y": 0.5}
+                                size_hint: (0.4,0.6)
                             Spacer:
                                 size_hint:(0.25,0.6)
 
+
                         Spacer:
-                            size_hint: (1,0.1)
+                            size_hint:(1,0.1)
 
-                        ##--End of Active Cases Widget ------#
-
-            ##----------------------End of "Confirmed Cases", "Active case", "Confirmed Death" row-------------------#
-
+                        ##--End of Active Cases Widget------#
+    ##-----------------End of "Confirmed Cases", "Active cases", "Confirmed Deaths" row------------------------#
             Spacer:
-                size_hint: (1, 0.025)
+                size_hint: (1,0.025)
 
-            ##----------------------Start of "Graph", "Recovered case" row-------------------#
+            ##-----------------Start of "Recovered Cases", "Graph"row------------------------#
 
             BoxLayout:
                 orientation: "horizontal"
-                size_hint: (1,0.3)
+                size_hint : (1,0.3)
 
                 BoxLayout:
                     orientation: "horizontal"
                     size_hint: (0.74,1)
+                    id: cases_plot_id
                     spacing: "10"
 
                     canvas:
@@ -343,72 +372,68 @@
                         Rectangle:
                             size: self.size
                             pos: self.pos
+
+
+
 
                 Spacer:
                     size_hint: (0.01,1)
 
-                ##--Start of Recovered  Widget ------#
                 BoxLayout:
                     orientation: "vertical"
                     size_hint: (0.25,1)
                     spacing: "10"
+
                     canvas:
                         Color:
                             rgba: utils.get_color_from_hex("#121c2e")
                         Rectangle:
-                            size: self.size
+                            size:self.size
                             pos: self.pos
-
                     Spacer:
                         size_hint:(1,0.1)
 
                     Label:
-                        text: "Recovered"
-                        font_size: "24sp"
+                        text:"Recovered"
+                        font_size : "24sp"
                         font_name: "roboto-medium"
-                        color: utils.get_color_from_hex("#47546e")
-                        size_hint: (1,0.1)
+                        color : utils.get_color_from_hex("#47546e")
+                        size_hint: (1,0.5)
                     Label:
                         id: recovered_cases_id
-                        font_name: "roboto-medium"
-                        font_size: "55sp"
                         text: "--"
+                        font_size: "55sp"
+                        font_name: "roboto-medium"
                         color: utils.get_color_from_hex("#47546e")
-                        size_hint: (1,0.5)
+                        size_hint:(1,0.5)
 
                     BoxLayout:
                         orientation: "horizontal"
-                        size_hint:(1,0.2)
+                        size_hint: (1,0.2)
 
                         Spacer:
                             size_hint:(0.29,0.6)
                         Image:
                             source: "icons/green_circle.png"
-                            size_hint:(0.08,0.4)
-                            pos_hint:{"center_y":0.45}
+                            size_hint: (0.05,0.4)
+                            pos_hint: {"center_y" : 0.5}
                         Spacer:
-                            size_hint:(0.01,0.1)
+                            size_hint:(0.01,0.2)
+
                         Label:
                             id: recovery_rate_id
                             text: "--"
-                            font_size: "22sp"
-                            size_hint: (0.2,0.6)
+                            font_size: "15sp"
+                            size_hint: (0.4,0.6)
                             font_name: "roboto-medium"
                             color: utils.get_color_from_hex("#05a379")
-                            pos_hint:{"center_y":0.5}
-
+                            pos_hint: {"center_y":0.5}
                         Spacer:
                             size_hint:(0.25,0.1)
-
                     Spacer:
-                        size_hint: (1,0.1)
+                        size_hint:(1,0.1)
 
-                ##--End of Recovered Cases Widget ------#
-
-
-            ##----------------------End of "Graph", "Recovered" row-------------------#
-
-
+           ##-----------------End of "Recovered Cases", "Graph"row------------------------#
 
             Spacer:
-                size_hint: (1,0.03)
+                size_hint:(1,0.03)
